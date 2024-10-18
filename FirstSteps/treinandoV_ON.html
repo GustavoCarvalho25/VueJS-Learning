@@ -23,7 +23,6 @@
         .azul {
             background-color: blue;
         }
-
         .vermelho {
             background-color: red;
         }
@@ -47,24 +46,32 @@
 
 <body>
     <div id="app">
-        <a href="https:gustavo.com.br"
-         target="_blank"
-         @click="prevenirComportamentoPadrao()"
-        >
-        Link
-        </a>
-        Mensagem: {{mensagem}}
+        <div class="borda div-principal" :class="cor">
+            Cor: {{cor}}
+            Posicao X do mouse: {{posicaoX}}
+            Posicao Y do mouse: {{posicaoY}}
+        </div>
+        <hr>
+        <div @click="mudarCor('verde')" class="borda div-comum"></div>
+        <div @mouseover="mudarCor('azul')" @mouseout="mudarCor('vermelho')" class="borda div-comum"></div>
+        <div @mousemove="coordenadas($event)" class="borda div-comum"></div>
     </div>
 
     <script>
         const vm = new Vue({
             el: '#app',
             data: {
-                mensagem: ''
+                cor: 'branco',
+                posicaoX: 0,
+                posicaoY: 0,
             },
             methods: {
-                prevenirComportamentoPadrao() {
-                    this.mensagem = 'Comportamento padrão ativado'
+                mudarCor(c) {
+                    this.cor = c;
+                },
+                coordenadas(evento) {
+                    this.posicaoX = evento.clientX;
+                    this.posicaoY = evento.clientY
                 }
             }
         })
