@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{ mensagem }} <br>
+        Valor total: {{ valorTotal }} <br>
+        Logado: {{ logado }} <br>
+        Hobbie: {{ hobies[1] }} <br>
+        Perfil: {{ perfil.site }}, {{ perfil.cursos[0].nome }}
+    </div>
+
+    <script>
+        const vm = new Vue({
+            el:'#app',
+            data: {
+                mensagem: 'Primeiro contato!',
+                valorTotal: 150.50,
+                logado: false,
+                hobies: [
+                    'Dormir',
+                    'Colecionar',
+                    'Correr',
+                    'Valorant'
+                ],
+                perfil: {
+                    nome: 'Gustavo Teste',
+                    site: 'site.com.br',
+                    idade: 90,
+                    cursos: [
+                        {nome: 'Dotnet', cargaHoraria: 30},
+                        {nome: 'Vue.js', cargaHoraria: 60}
+                    ]
+                }
+            }
+        })
+    </script>
+</body>
+</html>
