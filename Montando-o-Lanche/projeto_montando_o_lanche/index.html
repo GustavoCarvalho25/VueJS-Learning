@@ -273,6 +273,7 @@
           etapa: 1,
           inputNome: "",
           inputEndereco: "",
+          novoPedidoAssincrono: null,
         },
         methods: {
           fazerPedido() {
@@ -288,7 +289,10 @@
               this.etapa = 3;
               //realizar requisição HTTP para salvar o pedido no backend
 
-              setTimeout(() => this.novoPedido(), 5000);
+              this.novoPedidoAssincrono = setTimeout(
+                () => this.novoPedido(),
+                5000
+              );
             } else {
               alert("Informe seu nome e endereço");
             }
@@ -301,6 +305,15 @@
             this.inputTipoHamburguer = "";
             this.inputNome = "";
             this.inputEndereco = "";
+          },
+        },
+        watch: {
+          etapa(novoValor) {
+            if (novoValor == 1) {
+              console.log("ETAPA 1");
+              alert("VOLTEI");
+              clearTimeout(this.novoPedidoAssincrono);
+            }
           },
         },
         computed: {
