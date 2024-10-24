@@ -1,65 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./vue.js"></script>
+    <title>Document</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="./vue.js"></script>
-  <title>Document</title>
+    <style></style>
+  </head>
 
-  <style>
+  <body>
+    <div id="app">
+      <span>Paciente: </span><input type="text" v-model="paciente" />
+      <br />
+      <ul>
+        <li v-for="p in lista">{{p.nome}} - {{p.idade}}</li>
+      </ul>
+    </div>
 
-  </style>
-</head>
-
-<body>
-  <div id="app">
-    <ul>
-      <li v-for="(curso, key) in cursos" v-text="key + ' - ' + curso"> </li>
-    </ul>
-    <hr>
-    <table border="1">
-      <thead>
-        <tr>
-          <th>Id</th>
-          <th>Titulo</th>
-          <th>Descricao</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="curso, chave in cursos2">
-          <td>
-            {{chave}}
-          </td>
-          <td>{{curso.titulo}}</td>
-          <td>{{curso.descricao}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <script>
-    const vm = new Vue({
-      el: "#app",
-      data: {
-        cursos: ['Laravel', 'Web', 'Dotnet', 'Solid', 'CQRS'],
-        cursos2: {
-          1000: {
-            titulo: 'Laravel',
-            descricao: 'Descricao Laravel'
-          },
-          1001: {
-            titulo: 'Dotnet',
-            descricao: 'Descricao Dotnet'
+    <script>
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          paciente: "",
+          pacientes: [
+            { nome: "Juan", idade: 25 },
+            { nome: "Maria", idade: 30 },
+            { nome: "Pedro", idade: 35 },
+            { nome: "João", idade: 40 },
+          ],
+          lista: [],
+        },
+        methods: {},
+        watch: {
+          paciente(valorNovo) {
+            console.log(valorNovo);
+            this.lista = this.pacientes.filter((p) =>
+              p.nome.match(valorNovo)
+            );
           },
         },
-
-      },
-      methods: {
-
-      },
-    });
-  </script>
-</body>
-
+      });
+    </script>
+  </body>
 </html>
