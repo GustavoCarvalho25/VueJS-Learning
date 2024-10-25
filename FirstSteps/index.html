@@ -1,46 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <script src="./vue.js"></script>
     <title>Document</title>
 
     <style></style>
-  </head>
+</head>
 
-  <body>
-    <div id="app">
-      <span>Paciente: </span><input type="text" v-model="paciente" />
-      <br />
-      <ul>
+<body>
+<div id="app">
+    <span>Paciente: </span><input type="text" v-model="paciente"/>
+    <br/>
+    <ul>
         <li v-for="p in lista">{{p.nome}} - {{p.idade}}</li>
-      </ul>
-    </div>
+    </ul>
+</div>
 
-    <script>
-      const vm = new Vue({
+<script>
+    const vm = new Vue({
         el: "#app",
         data: {
-          paciente: "",
-          pacientes: [
-            { nome: "Juan", idade: 25 },
-            { nome: "Maria", idade: 30 },
-            { nome: "Pedro", idade: 35 },
-            { nome: "João", idade: 40 },
-          ],
-          lista: [],
+            paciente: "",
+            pacientes: [
+                {nome: "Juan", idade: 25},
+                {nome: "Maria", idade: 30},
+                {nome: "Pedro", idade: 35},
+                {nome: "João", idade: 40},
+            ],
+            lista: [],
         },
         methods: {},
         watch: {
-          paciente(valorNovo) {
-            console.log(valorNovo);
-            this.lista = this.pacientes.filter((p) =>
-              p.nome.match(valorNovo)
-            );
-          },
+            paciente(valorNovo) {
+                console.log(valorNovo);
+                this.lista = this.pacientes.filter((p) =>
+                    p.nome.match(valorNovo)
+                );
+            },
         },
-      });
-    </script>
-  </body>
+    });
+</script>
+</body>
 </html>

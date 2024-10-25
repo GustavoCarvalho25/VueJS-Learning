@@ -1,36 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <script src="./vue.js"></script>
     <title>Document</title>
 
     <style></style>
-  </head>
+</head>
 
-  <body>
-    <div id="app">
-      <template v-if="saudacao">
+<body>
+<div id="app">
+    <template v-if="saudacao">
         <h1>Boas vindas</h1>
         <p>Conteudo da tag <strong>template</strong></p>
-      </template>
+    </template>
 
-      <div v-for="n in 10">
-        <p>2x {{n}} = {{2*n}}</p>
-      </div>
+    <div v-for="n in 10">
+        <p>2x {{n}} = {{2 * n}}</p>
     </div>
+</div>
 
-    <script>
-      const vm = new Vue({
+<script>
+    const vm = new Vue({
         el: "#app",
         data: {
-          saudacao: true,
+            saudacao: true,
         },
-        methods: {
-
-        },
-      });
-    </script>
-  </body>
+        methods: {},
+    });
+</script>
+</body>
 </html>
