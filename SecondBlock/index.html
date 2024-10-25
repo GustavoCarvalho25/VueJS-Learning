@@ -13,30 +13,24 @@
 
 <body>
 <div id="app">
-    <form action="" ref="formulario">
-        <span>Name: </span><input type="text" id="inputNome" ref="inputNome">
-        <br>
-        <span>Comentário: </span><textarea></textarea>
-        <br>
-        <button @click.prevent="cadastrar()">Cadastrar</button>
-    </form>
-    <hr>
-    {{resultado}}
-
+    <p>{{texto}}</p>
+    <button @click="modificarTextoVD()">Adicionar @ (VD)</button>
+    <button onClick="modificarTexto()">Adicionar @</button>
 </div>
 
 <script>
+    function modificarTexto() {
+        let t = document.querySelector('p').innerText
+    }
+
     const vm = new Vue({
         el: "#app",
         data: {
-            resultado: '',
+            texto: 'DOM e Virtual DOM'
         },
         methods: {
-            cadastrar() {
-                let nome = this.$refs.inputNome.value;
-                let comentario = this.$refs.formulario[1].value;
-
-                this.resultado = `${nome} disse "${comentario}"`
+            modificarTextoVD() {
+                this.texto += '@'
             }
         }
     });
