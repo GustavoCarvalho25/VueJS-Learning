@@ -1,68 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <script src="./vue.js"></script>
     <title>Document</title>
 
     <style></style>
-  </head>
+</head>
 
-  <body>
-    <div id="app">
-      <h4>Adicionar Pacientes</h4>
-      <span>Nome: </span><input type="text" id="inputNome" />
-      <span>Idade: </span><input type="text" id="inputIdade" />
-      <span>Plano: </span><input type="text" id="inputPlano" />
-      <button @click="adicionarPacientes()">Adicionar</button>
-      <hr />
-      <h4>Último paciente cadastrado</h4>
-      <p v-if="pacientes.length > 0">
+<body>
+<div id="app">
+    <h4>Adicionar Pacientes</h4>
+    <span>Nome: </span><input type="text" id="inputNome"/>
+    <span>Idade: </span><input type="text" id="inputIdade"/>
+    <span>Plano: </span><input type="text" id="inputPlano"/>
+    <button @click="adicionarPacientes()">Adicionar</button>
+    <hr/>
+    <h4>Último paciente cadastrado</h4>
+    <p v-if="pacientes.length > 0">
         <!-- {{pacientes[pacientes.length - 1].nome}}
         {{pacientes[pacientes.length - 1].idade}}
         {{pacientes[pacientes.length - 1].plano}} -->
         {{ultimoPaciente}}
-      </p>
-      <hr />
-      <h4>Pacientes do plano Ouro</h4>
-      <p v-for="p in pacientesPlanoOuro">{{p.nome}}</p>
-      <hr />
-      <h4>Pacientes cadastrados</h4>
-      <p v-for="p in pacientes">{{p.nome}}</p>
-    </div>
+    </p>
+    <hr/>
+    <h4>Pacientes do plano Ouro</h4>
+    <p v-for="p in pacientesPlanoOuro">{{p.nome}}</p>
+    <hr/>
+    <h4>Pacientes cadastrados</h4>
+    <p v-for="p in pacientes">{{p.nome}}</p>
+</div>
 
-    <script>
-      const vm = new Vue({
+<script>
+    const vm = new Vue({
         el: "#app",
         data: {
-          pacientes: [],
+            pacientes: [],
         },
         methods: {
-          adicionarPacientes() {
-            this.pacientes.push({
-              nome: inputNome.value,
-              idade: inputIdade.value,
-              plano: inputPlano.value,
-            });
-          },
+            adicionarPacientes() {
+                this.pacientes.push({
+                    nome: inputNome.value,
+                    idade: inputIdade.value,
+                    plano: inputPlano.value,
+                });
+            },
         },
         computed: {
-          ultimoPaciente() {
-            let key = this.pacientes.length - 1;
-            let txt = "";
+            ultimoPaciente() {
+                let key = this.pacientes.length - 1;
+                let txt = "";
 
-            txt += "Paciente " + this.pacientes[key].nome + ", ";
-            txt += "Idade" + this.pacientes[key].idade + ", ";
-            txt += "Plano" + this.pacientes[key].plano;
+                txt += "Paciente " + this.pacientes[key].nome + ", ";
+                txt += "Idade" + this.pacientes[key].idade + ", ";
+                txt += "Plano" + this.pacientes[key].plano;
 
-            return txt;
-          },
-          pacientesPlanoOuro() {
-            return this.pacientes.filter((p) => p.plano == "Ouro");
-          }
+                return txt;
+            },
+            pacientesPlanoOuro() {
+                return this.pacientes.filter((p) => p.plano == "Ouro");
+            }
         },
-      });
-    </script>
-  </body>
+    });
+</script>
+</body>
 </html>

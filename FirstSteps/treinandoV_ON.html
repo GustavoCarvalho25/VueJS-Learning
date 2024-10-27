@@ -23,6 +23,7 @@
         .azul {
             background-color: blue;
         }
+
         .vermelho {
             background-color: red;
         }
@@ -45,37 +46,37 @@
 </head>
 
 <body>
-    <div id="app">
-        <div class="borda div-principal" :class="cor">
-            Cor: {{cor}}
-            Posicao X do mouse: {{posicaoX}}
-            Posicao Y do mouse: {{posicaoY}}
-        </div>
-        <hr>
-        <div @click="mudarCor('verde')" class="borda div-comum"></div>
-        <div @mouseover="mudarCor('azul')" @mouseout="mudarCor('vermelho')" class="borda div-comum"></div>
-        <div @mousemove="coordenadas($event)" class="borda div-comum"></div>
+<div id="app">
+    <div class="borda div-principal" :class="cor">
+        Cor: {{cor}}
+        Posicao X do mouse: {{posicaoX}}
+        Posicao Y do mouse: {{posicaoY}}
     </div>
+    <hr>
+    <div @click="mudarCor('verde')" class="borda div-comum"></div>
+    <div @mouseover="mudarCor('azul')" @mouseout="mudarCor('vermelho')" class="borda div-comum"></div>
+    <div @mousemove="coordenadas($event)" class="borda div-comum"></div>
+</div>
 
-    <script>
-        const vm = new Vue({
-            el: '#app',
-            data: {
-                cor: 'branco',
-                posicaoX: 0,
-                posicaoY: 0,
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            cor: 'branco',
+            posicaoX: 0,
+            posicaoY: 0,
+        },
+        methods: {
+            mudarCor(c) {
+                this.cor = c;
             },
-            methods: {
-                mudarCor(c) {
-                    this.cor = c;
-                },
-                coordenadas(evento) {
-                    this.posicaoX = evento.clientX;
-                    this.posicaoY = evento.clientY
-                }
+            coordenadas(evento) {
+                this.posicaoX = evento.clientX;
+                this.posicaoY = evento.clientY
             }
-        })
-    </script>
+        }
+    })
+</script>
 </body>
 
 </html>
