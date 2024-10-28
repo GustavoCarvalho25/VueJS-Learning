@@ -42,10 +42,13 @@
           "allowBinding": false
         }
       ],
-      "vue/no-duplicate-attributes": ["error", {
-        "allowCoexistClass": false,
-        "allowCoexistStyle": true
-      }]
+      "vue/no-duplicate-attributes": [
+        "error",
+        {
+          "allowCoexistClass": false,
+          "allowCoexistStyle": true
+        }
+      ]
     }
   },
   "browserslist": [
