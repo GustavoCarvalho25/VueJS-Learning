@@ -1,11 +1,5 @@
 <template>
   <div>
-    <p>Conteudo</p>
-    <button @click="atualizarComponente()">Atualizar</button>
-    <button @click="conteudo = 'home'">Home</button>
-    <button @click="conteudo = 'publicar-vaga'">Publicar Vaga</button>
-    <!--    <home></home>-->
-    <!--    <publicar-vaga></publicar-vaga>-->
     <keep-alive>
       <component :is="conteudo"></component>
     </keep-alive>
@@ -22,9 +16,12 @@ export default {
     Home,
     PublicarVaga,
   },
-  data: () => ({
-    conteudo: 'home',
-  }),
+  props: {
+    conteudo: {
+      type: String,
+      required: true
+    }
+  },
   methods: {},
   beforeCreate() {
     console.log('BeforeCreate')
@@ -47,7 +44,7 @@ export default {
   beforeUnmount() {
     console.log('BeforeUnmount')
   },
-  unmount() {
+  unmounted() {
     console.log('Component unmount')
   },
   errorCaptured() {
