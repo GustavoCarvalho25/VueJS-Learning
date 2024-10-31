@@ -9,10 +9,10 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="#">Home</a>
+            <a class="nav-link" href="#" @click="navegarPara('Home')">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Publicar vaga</a>
+            <a class="nav-link" href="#" @click="navegarPara('PublicarVaga')">Publicar vaga</a>
           </li>
         </ul>
       </div>
@@ -22,7 +22,12 @@
 
 <script>
 export default {
-  name: 'TopoPadrao'
+  name: 'TopoPadrao',
+  methods: {
+    navegarPara(page) {
+      this.$emit('navegar', page);
+    }
+  }
 }
 </script>
 
