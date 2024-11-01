@@ -5,7 +5,7 @@
         <div class="col d-flex justify-content-between">
           <div>{{ titulo }}</div>
           <div class="form-check form-switch">
-            <input type="checkbox" class="form-check-input">
+            <input type="checkbox" class="form-check-input" v-model="favoritada">
             <label class="form-check-label">Favoritar</label>
           </div>
         </div>
@@ -35,6 +35,18 @@ export default {
     tipo: String,
     publicacao: String,
   }*/
+  data: () => ({
+    favoritada: false
+  }),
+  watch: {
+    favoritada(valorNovo) {
+      if (valorNovo) {
+        this.emitter.emit('favoritarVaga', this.titulo)
+      } else {
+        this.emitter.emit('desfavoritarVaga', this.titulo)
+      }
+    }
+  },
   props: {
     titulo: {
       type: String,
@@ -93,6 +105,11 @@ export default {
       let dataPublicacao = new Date(this.publicacao);
       return dataPublicacao.toLocaleDateString()
     }
+  },
+  methods: {
+    /*dispararEventoComMitt() {
+      this.emitter.emit('eventoGlobal1', 'Teste Captura Evento Parametro')
+    }*/
   }
 }
 </script>
