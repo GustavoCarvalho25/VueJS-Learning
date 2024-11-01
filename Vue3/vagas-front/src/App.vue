@@ -1,6 +1,7 @@
 <template>
   <vagas-favoritas></vagas-favoritas>
   <topo-padrao @navegar="componente = $event"></topo-padrao>
+  <alerta v-if="exibirAlerta"></alerta>
   <conteudo :conteudo="componente"></conteudo>
 </template>
 
@@ -8,16 +9,19 @@
 import VagasFavoritas from '@/comuns/VagasFavoritas.vue';
 import Conteudo from '@/components/layouts/Conteudo.vue'
 import TopoPadrao from '@/components/layouts/TopoPadrao.vue'
+import Alerta from '@/comuns/Alerta.vue'
 
 export default {
   name: 'App',
   components: {
     Conteudo,
     TopoPadrao,
-    VagasFavoritas
+    VagasFavoritas,
+    Alerta
   },
   data: () => ({
-    componente: 'Home'
+    componente: 'Home',
+    exibirAlerta: false
   }),
   methods: {
     acao(p1, p2) {
@@ -25,6 +29,13 @@ export default {
       console.log(p1)
       console.log(p2)
     }
+  },
+  mounted() {
+    this.emitter.on('alerta', () => {
+      this.exibirAlerta = true
+      setTimeout(() => this.exibirAlerta = false, 4000)
+      console.log('Mensagem de Alerta')
+    })
   }
 }
 </script>
