@@ -90,6 +90,18 @@ export default {
       })
 
       localStorage.setItem('vagas', JSON.stringify(vagas))
+
+      this.emitter.emit('alerta')
+
+      this.resetaFormularioCadastroVagas()
+    },
+    resetaFormularioCadastroVagas() {
+      this.titulo = ''
+      this.descricao = ''
+      this.salario = ''
+      this.modalidade = ''
+      this.dataPublicacao = ''
+      this.tipo = ''
     }
   }
 }
