@@ -1,6 +1,8 @@
 <template>
   <div class="alert alert-success" role="alert">
-    Mensagem
+    <slot name="titulo"></slot>
+    <hr>
+    <slot></slot>
   </div>
 </template>
 

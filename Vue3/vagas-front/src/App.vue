@@ -1,7 +1,13 @@
 <template>
   <vagas-favoritas></vagas-favoritas>
   <topo-padrao @navegar="componente = $event"></topo-padrao>
-  <alerta v-if="exibirAlerta"></alerta>
+  <alerta v-if="exibirAlerta">
+    <template v-slot:titulo>
+      <h5>Titulo do alerta</h5>
+    </template>
+    <p>Descricao do alerta</p>
+
+  </alerta>
   <conteudo :conteudo="componente"></conteudo>
 </template>
 
@@ -21,7 +27,7 @@ export default {
   },
   data: () => ({
     componente: 'Home',
-    exibirAlerta: false
+    exibirAlerta: true
   }),
   methods: {
     acao(p1, p2) {
